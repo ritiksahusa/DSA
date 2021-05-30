@@ -18,12 +18,16 @@ class LadderSoln {
     // complexity analyzer(check the count in debugger )
     int count1 = 0;
     int count2 = 0;
+    int count3 = 0;
     // public int bottomUp()
 
-    public int buttomUp(int n, int k) {
+    public int bottumUp(int n, int k) {
+        arr = new int[1000];
+        arr[0] = 1; // reset arrays
         for (int i = 1; i <= n; i++) {
             int count = 0;
-            for (int j = i - 1; j >= i - k; j--) {
+            for (int j = i - 1; j >= i - k; j--) {// current last K values
+                count3++;
                 if (j < 0)
                     break;
                 count = count + arr[j];
@@ -34,7 +38,7 @@ class LadderSoln {
     }
 
     public int topDown(int n, int k) {
-        count1++;
+        count2++;
         if (n < 0)
             return 0;
         if (arr[n] != -1)
@@ -47,7 +51,7 @@ class LadderSoln {
     }
 
     public int recursive(int n, int k) {
-        count2++;
+        count1++;
         if (n == 0) // base case
             return 1;
         if (n < 0)
@@ -65,8 +69,12 @@ public class LadderProblem {
 
     public static void main(String[] args) {
         LadderSoln soln = new LadderSoln();
-        System.out.println(soln.buttomUp(20, 3));// sample values
-        System.out.println(soln.recursive(20, 3));
+        int n = 20;
+        int k = 3;
+        // sample values
+        System.out.println(soln.recursive(n, k));
+        System.out.println(soln.topDown(n, k));
+        System.out.println(soln.bottumUp(n, k));
         System.out.println();
 
     }

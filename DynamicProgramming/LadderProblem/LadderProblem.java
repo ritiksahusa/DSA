@@ -13,6 +13,7 @@ class LadderSoln {
         arr = new int[1000];// sample size
         Arrays.fill(arr, -1);
         arr[0] = 1;
+        arr[1] = 1;
     }
 
     // hello
@@ -22,7 +23,20 @@ class LadderSoln {
     int count3 = 0;
     // public int bottomUp()
 
-    public int bottumUp(int n, int k) {
+    public int bottumUpOptimized(int n, int k) { // O(N) O(N) count 4=n
+        arr = new int[1000];
+        arr[0] = 1; // reset arrays
+        arr[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            if (i - (k + 1) >= 0)
+                arr[i] = 2 * arr[i - 1] - arr[i - (k + 1)];
+            else
+                arr[i] = 2 * arr[i - 1];
+        }
+        return arr[n];
+    }
+
+    public int bottumUp(int n, int k) { // O(K*N) O(N)
         arr = new int[1000];
         arr[0] = 1; // reset arrays
         for (int i = 1; i <= n; i++) {
@@ -38,7 +52,7 @@ class LadderSoln {
         return arr[n];
     }
 
-    public int topDown(int n, int k) {
+    public int topDown(int n, int k) { // O(K*N) O(N)
         count2++;
         if (n < 0)
             return 0;
@@ -51,7 +65,7 @@ class LadderSoln {
         return arr[n] = count;
     }
 
-    public int recursive(int n, int k) {
+    public int recursive(int n, int k) { // O(K^N)
         count1++;
         if (n == 0) // base case
             return 1;
@@ -73,8 +87,9 @@ public class LadderProblem {
         int n = 20;
         int k = 3;
         // sample values
+        // System.out.println(soln.bottumUpOptimized(n, k));
         System.out.println(soln.recursive(n, k));
-        System.out.println(soln.topDown(n, k));
+        // System.out.println(soln.topDown(n, k));
         System.out.println(soln.bottumUp(n, k));
         System.out.println();
 

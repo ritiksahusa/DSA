@@ -65,11 +65,11 @@ class RodSoln {
 public class RodCutting {
     public static void main(String[] args) {
         RodSoln rs = new RodSoln();
-        int price[] = { 3, 5, 8, 9, 10, 17, 17, 20 };
-        int length[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+        int price[] = { 5, 8, 9, 10, 17, 17, 20 };
+        int length[] = { 2, 3, 4, 5, 6, 7, 8 };
         int m = 8;
-        // System.out.println(rs.recursive(price, length, m));
-        // System.out.println(rs.topDown(price, length, m));
+        System.out.println(rs.recursive(price, length, m));
+        System.out.println(rs.topDown(price, length, m));
         System.out.println(rs.buttomUp(price, length, m));
         System.out.println();
     }

@@ -55,8 +55,10 @@ class NonAdjSoln {
     }
 
     public int buttomUp(int[] arr) {
-        arr3[0] = arr[0];
-        arr3[1] = Math.max(arr3[0], arr[1]);
+        if (arr.length >= 1)
+            arr3[0] = Math.max(0, arr[0]);
+        if (arr.length >= 2)
+            arr3[1] = Math.max(arr3[0], arr[1]);
         for (int i = 2; i < arr.length; i++) {
             count3++;
             arr3[i] = Math.max(arr3[i - 1], arr[i] + arr3[i - 2]);
